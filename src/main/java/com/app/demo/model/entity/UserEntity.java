@@ -18,8 +18,9 @@ public class UserEntity {
     @Column(nullable = false, length = 50, unique = true)
     private String username;
 
-    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private AddressEntity address;
+    //  cascade = CascadeType.ALL, orphanRemoval = true use for delete record child and parent(join)
 
     @Override
     public boolean equals(Object o) {

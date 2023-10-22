@@ -68,13 +68,11 @@ public class UserService {
         // set save null address to db
         if(req.getAddress() == null)
             foundUser.setAddress(null);
-        else foundUser.getAddress().setAddress(req.getAddress().getAddress());
+        else foundUser.setAddress(req.getAddress().toEntity(foundUser));
 
-        foundUser.getAddress().setAddress(req.getAddress().getAddress());  // there are obj addr in obj addr
         try {
-            this.userRepository.save(foundUser);    // save username
-            this.addressRepository.save(foundUser.getAddress());    // save address
-            return this.userRepository.findById(foundUser.getId()).orElseThrow(()->new NotFoundException("User not found"));
+            System.out.println("Hello address: "+foundUser.getAddress());
+            return this.userRepository.save(foundUser);
         } catch (Exception e) {
             throw new Exception(e);
         }

@@ -20,12 +20,13 @@ public class UserRegisterResponse implements Serializable {
     }
 
     public static UserRegisterResponse fromEntity(UserEntity entity) {
-        AddressResponse addressResponse = new AddressResponse(entity.getAddress().getId(), entity.getAddress().getAddress());
+        AddressResponse addr;
+        if (entity.getAddress() == null) addr = null;
+        else addr = new AddressResponse(entity.getAddress().getId(), entity.getAddress().getAddress());
         return new UserRegisterResponse(
                 entity.getId(),
                 entity.getUsername(),
-                addressResponse
+                addr
         );
     }
-
 }
