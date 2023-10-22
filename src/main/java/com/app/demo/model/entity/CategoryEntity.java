@@ -20,16 +20,6 @@ public class CategoryEntity {
     @Column(length = 100, unique = true)
     private String gmail;
 
-
-
-
-//    public String getUsername() {
-//        return this.username;
-//    }
-//    public String getGmail() {
-//        return gmail;
-//    }
-
     @Override
     public final boolean equals(Object o) {
         if (this == o) return true;

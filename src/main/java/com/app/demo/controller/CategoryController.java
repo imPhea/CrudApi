@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.security.PublicKey;
 import java.util.List;
 
 @RestController
@@ -22,15 +21,13 @@ public class CategoryController {
         this.categoryService = categoryService;
     }
 
-    @PostMapping              // create
-    public ResponseEntity<CategoryResponse> create(
-            @RequestBody CategoryRequest request
-    ) throws Exception {
+    @PostMapping              // create new category
+    public ResponseEntity<CategoryResponse> create(@RequestBody CategoryRequest request) throws Exception {
         CategoryEntity category = this.categoryService.create(request);
         return ResponseEntity.ok(CategoryResponse.fromEntity(category));
     }
 
-    @PutMapping("/{id}")      // update
+    @PutMapping("/{id}")      // update by id
     public ResponseEntity<CategoryResponse> update(@PathVariable Long id, @RequestBody CategoryRequest categoryRequest) throws Exception {
         CategoryEntity category = this.categoryService.update(id, categoryRequest);
         return ResponseEntity.ok(CategoryResponse.fromEntity(category));

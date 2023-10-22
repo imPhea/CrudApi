@@ -5,7 +5,6 @@ import com.app.demo.exception.NotFoundException;
 import com.app.demo.model.entity.CategoryEntity;
 import com.app.demo.model.request.category.CategoryRequest;
 import com.app.demo.repository.CategoryRepository;
-import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

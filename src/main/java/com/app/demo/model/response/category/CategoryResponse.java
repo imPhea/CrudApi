@@ -8,9 +8,9 @@ import java.io.Serializable;
 // imp serialize use for convert to byte stream in network(api)
 @Getter
 public class CategoryResponse implements Serializable {
-    private Long id;
-    private String username;
-    private String gmail;
+    private  Long id;
+    private  String username;
+    private  String gmail;
 
     // constructor
     public CategoryResponse(Long _id, String _username, String _gmail) {

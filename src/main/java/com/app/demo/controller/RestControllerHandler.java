@@ -1,6 +1,7 @@
 package com.app.demo.controller;
 
 import com.app.demo.exception.AlreadyExistException;
+import com.app.demo.exception.BadRequestException;
 import com.app.demo.exception.NotFoundException;
 import com.app.demo.model.response.error.ErrorResponse;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +28,12 @@ public class RestControllerHandler {
     public ResponseEntity<ErrorResponse> handleNotFoundException(NotFoundException ex) {
         ErrorResponse err = new ErrorResponse(ex.getMessage(), (short) 404);
         return ResponseEntity.status(404).body(err);
+    }
+
+    @ExceptionHandler(BadRequestException.class)
+    public ResponseEntity<ErrorResponse> handleBadExceptionHandler(BadRequestException ex) {
+        ErrorResponse err = new ErrorResponse(ex.getMessage(), (short) 400);
+        return ResponseEntity.status(400).body(err);
     }
 }
 
