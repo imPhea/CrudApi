@@ -20,7 +20,7 @@ public class UserEntity {
 
     @OneToOne(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private AddressEntity address;
-    //  cascade = CascadeType.ALL, orphanRemoval = true use for delete record child and parent(join)
+    //  cascade = CascadeType.ALL, orphanRemoval = true, use for delete record child and parent(join)
 
     @Override
     public boolean equals(Object o) {

@@ -82,4 +82,12 @@ public class UserService {
     public UserEntity login(UserLoginRequest req) throws BadRequestException {
         return this.userRepository.findByUsername(req.getUsername()).orElseThrow(()-> new BadRequestException("Invalid username."));
     }
+
+    public void delete(Long id) throws Exception {
+        try {
+            this.userRepository.deleteById(id);
+        } catch (Exception e) {
+            throw new Exception(e);
+        }
+    }
 }

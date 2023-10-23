@@ -9,7 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/api/user")
@@ -36,5 +39,13 @@ public class UserController {
     public ResponseEntity<UserRegisterResponse> update(@PathVariable Long id, @RequestBody UserRegisterRequest request) throws Exception {
         UserEntity data = this.userService.update(id, request);
         return ResponseEntity.ok(UserRegisterResponse.fromEntity(data));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Map<String, String>> delete(@PathVariable Long id) throws Exception {
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "Delete successful!!");
+        this.userService.delete(id);
+        return ResponseEntity.ok(response);
     }
 }
